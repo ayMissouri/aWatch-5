@@ -1,23 +1,33 @@
 <template >
   <div class="gradient-background w-screen h-screen">
     <div class="flex items-center justify-center flex-col gap-4 pt-40">
-      <Button />
-      <Button type="secondary" />
-      <Button type="secondary" icon="play" />
-      <Button type="outlined" />
-      <Button type="outlined" icon="play" />
-      <Button type="outlined circle" icon="plus" />
-      <Button type="outlined circle" icon="add" />
-      <Button type="outlined circle" icon="done" />
+      <div class="flex items-center justify-center flex-row gap-4">
+        <Button />
+        <Button type="secondary" />
+        <Button type="secondary" icon="play" />
+        <Button type="outlined" />
+        <Button type="outlined" icon="play" />
+      </div>
+
+      <div class="flex items-center justify-center flex-row gap-4">
+        <Button type="outlined circle" icon="plus" />
+        <Button type="outlined circle" icon="add" />
+        <Button type="outlined circle" icon="done" />
+      </div>
+
+      <ToolTip />
+
+      <Button type="play" />
     </div>
   </div>
 </template>
 
 <script >
 import Button from '../components/Button.vue';
+import ToolTip from '../components/ToolTip.vue';
 
 export default {
-  components: { Button },
+  components: { Button, ToolTip },
 
   data() {
     return {};

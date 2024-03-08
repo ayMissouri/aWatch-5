@@ -1,19 +1,19 @@
 <template>
   <button v-if="type === 'primary'" 
   class="bg-primary300 flex items-center justify-center h-12 px-6 button text-neutralMinus100 
-  rounded transition-all hover:bg-primary200 active:bg-primary400">
+  rounded transition-all hover:bg-primary200 active:bg-primary400 select-none">
     {{ text }}
   </button>
 
   <button v-if="type === 'secondary' && !icon" 
   class="bg-neutral-100 flex items-center justify-center h-12 px-6 button text-neutral600 
-  rounded transition-all hover:bg-neutral200 active:bg-neutral300">
+  rounded transition-all hover:bg-neutral200 active:bg-neutral300 select-none">
     {{ text }}
   </button>
   
   <button v-if="type === 'secondary' && icon === 'play'" 
   class="gap-3 bg-neutral-100 flex items-center justify-center h-12 px-6 button text-neutral600 
-  rounded transition-all hover:bg-neutral200 active:bg-neutral300">
+  rounded transition-all hover:bg-neutral200 active:bg-neutral300 select-none">
     <Icon type="play" fill="#1a1d29" />
     {{ text }}
   </button>
@@ -22,7 +22,7 @@
   class=" bg-black bg-opacity-10 border-[1px] border-neutralMinus100 flex items-center justify-center 
   h-12 px-6 button text-neutralMinus100 rounded transition-all hover:bg-neutral200 
   hover:border-neutral200 hover:border-opacity-40 hover:text-neutral700 hover:bg-opacity-40 
-  active:bg-neutral300 active:bg-opacity-40">
+  active:bg-neutral300 active:bg-opacity-40 select-none">
     {{ text }}
   </button>
   
@@ -32,7 +32,7 @@
   class="gap-3 bg-black bg-opacity-10 border-[1px] border-neutralMinus100 flex items-center justify-center 
   h-12 px-6 button text-neutralMinus100 rounded transition-all hover:bg-neutral200 
   hover:border-neutral200 hover:border-opacity-40 hover:text-neutral700 hover:bg-opacity-40 
-  active:bg-neutral300 active:bg-opacity-40">
+  active:bg-neutral300 active:bg-opacity-40 select-none">
     <Icon type="play" :iconClass="hover ? 'fill-neutral700' : 'fill-neutralMinus100'"  />
     {{ text }}
   </button>
@@ -61,7 +61,17 @@
   active:bg-opacity-60 hover:bg-opacity-30">
     <Icon type="done" fill="#02e7f5" />
   </button>
+
+  <button v-if="type === 'play'" 
+  @mouseover="hover = true" 
+  @mouseleave="hover = false"
+  class="gap-3 bg-black bg-opacity-10 border-[2px] border-neutralMinus100 flex items-center justify-center 
+  h-[48px] w-[48px] button text-neutralMinus100 transition-all hover:bg-neutralMinus100 rounded-full
+  hover:border-neutral200 hover:border-opacity-40 active:bg-neutral200">
+    <Icon type="play" :iconClass="hover ? 'fill-neutral700' : 'fill-neutralMinus100'"  />
+  </button>
   
+
 </template>
 
 <script>

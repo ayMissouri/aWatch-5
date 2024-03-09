@@ -1,23 +1,36 @@
 <template >
-  <div class="gradient-background w-screen h-screen">
-    <div class="flex items-center justify-center flex-col gap-4 pt-40">
-      <div class="flex items-center justify-center flex-row gap-4">
-        <Button />
-        <Button type="secondary" />
-        <Button type="secondary" icon="play" />
-        <Button type="outlined" />
-        <Button type="outlined" icon="play" />
+  <div class="flex justify-center flex-col items-center">
+    <div class="gradient-background w-full h-full">
+      <div class="flex items-center justify-center flex-col gap-4 pt-4">
+        <div class="flex items-center justify-center flex-col gap-4">
+          <Button />
+          <Button type="secondary" />
+          <Button type="secondary" icon="play" />
+          <Button type="outlined" />
+          <Button type="outlined" icon="play" />
+        </div>
+
+        <div class="flex items-center justify-center flex-row gap-4">
+          <Button type="outlined circle" icon="plus" />
+          <Button type="outlined circle" icon="add" />
+          <Button type="outlined circle" icon="done" />
+          <ToolTip />
+        </div>
+
+        <div class="flex items-center justify-center flex-row gap-4">
+          <Button type="play" />
+          <Button type="group" />
+          <Button type="info" />
+          <Button type="bookmark" />
+        </div>
+
       </div>
-
-      <div class="flex items-center justify-center flex-row gap-4">
-        <Button type="outlined circle" icon="plus" />
-        <Button type="outlined circle" icon="add" />
-        <Button type="outlined circle" icon="done" />
-      </div>
-
-      <ToolTip />
-
-      <Button type="play" />
+    </div>
+    <div class="max-w-[1440px] w-full px-4">
+      <Carousel :data="data" />
+    </div>
+    <div class="max-w-[1440px] w-full px-4">
+      <Carousel :data="data" />
     </div>
   </div>
 </template>
@@ -25,15 +38,16 @@
 <script >
 import Button from '../components/Button.vue';
 import ToolTip from '../components/ToolTip.vue';
+import Carousel from '../components/Carousel.vue';
 
 export default {
-  components: { Button, ToolTip },
+  components: { Button, ToolTip, Carousel },
 
   data() {
     return {};
   },
 
-  mounted() {
+  async mounted() {
     this.setupIntersectionObserver();
   },
   

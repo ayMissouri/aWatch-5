@@ -66,19 +66,58 @@
   @mouseover="hover = true" 
   @mouseleave="hover = false"
   class="gap-3 bg-black bg-opacity-10 border-[2px] border-neutralMinus100 flex items-center justify-center 
-  h-[48px] w-[48px] button text-neutralMinus100 transition-all hover:bg-neutralMinus100 rounded-full
+  h-[48px] w-[48px] text-neutralMinus100 transition-all hover:bg-neutralMinus100 rounded-full
   hover:border-neutral200 hover:border-opacity-40 active:bg-neutral200">
-    <Icon type="play" :iconClass="hover ? 'fill-neutral700' : 'fill-neutralMinus100'"  />
+    <Transition>
+      <ToolTip v-if="hover" text="Play" class="absolute mb-[110px]" />
+    </Transition>
+    <Icon type="play" :iconClass="hover ? 'fill-neutral700 ml-[2px]' : 'fill-neutralMinus100 ml-[2px]'"  />
+  </button>
+
+  <button v-if="type === 'group'" 
+  @mouseover="hover = true" 
+  @mouseleave="hover = false"
+  class="gap-3 bg-black bg-opacity-10 border-[2px] border-neutralMinus100 flex items-center justify-center 
+  h-[48px] w-[48px] text-neutralMinus100 transition-all hover:bg-neutralMinus100 rounded-full
+  hover:border-neutral200 hover:border-opacity-40 active:bg-neutral200">
+    <Transition>
+      <ToolTip v-if="hover" text="Watch together" class="absolute mb-[110px]" />
+    </Transition>
+    <Icon type="group" :iconClass="hover ? 'fill-neutral700' : 'fill-neutralMinus100'"  />
+  </button>
+
+  <button v-if="type === 'info'" 
+  @mouseover="hover = true" 
+  @mouseleave="hover = false"
+  class="gap-3 bg-black bg-opacity-10 border-[2px] border-neutralMinus100 flex items-center justify-center 
+  h-[48px] w-[48px] text-neutralMinus100 transition-all hover:bg-neutralMinus100 rounded-full
+  hover:border-neutral200 hover:border-opacity-40 active:bg-neutral200">
+    <Transition>
+      <ToolTip v-if="hover" text="Info" class="absolute mb-[110px]" />
+    </Transition>
+    <Icon type="info" :iconClass="hover ? 'fill-neutral700' : 'fill-neutralMinus100'"  />
   </button>
   
-
+  <button v-if="type === 'bookmark'" 
+  @mouseover="hover = true" 
+  @mouseleave="hover = false"
+  class="gap-3 bg-black bg-opacity-10 border-[2px] border-neutralMinus100 flex items-center justify-center 
+  h-[48px] w-[48px] text-neutralMinus100 transition-all hover:bg-neutralMinus100 rounded-full
+  hover:border-neutral200 hover:border-opacity-40 active:bg-neutral200">
+    <Transition>
+      <ToolTip v-if="hover" text="Bookmark" class="absolute mb-[110px]" />
+    </Transition>  
+    <Icon type="add" :iconClass="hover ? 'fill-neutral700' : 'fill-neutralMinus100'"  />
+  </button>
+  
 </template>
 
 <script>
 import Icon from './Icon.vue';
+import ToolTip from './ToolTip.vue';
 
 export default {
-  components: {Icon},
+  components: {Icon, ToolTip},
 
   data() {
     return {
@@ -107,4 +146,13 @@ export default {
 </script>
 
 <style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 </style>

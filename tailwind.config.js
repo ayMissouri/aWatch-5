@@ -21,6 +21,8 @@ module.exports = {
       fontFamily: {
         montserrat: ['Montserrat'],
         Rubik: ['Rubik'],
+        'Kanit-Regular': ['Kanitregular'],
+        Kanitbold: ['Kanitbold'],
       },
 
       colors: {

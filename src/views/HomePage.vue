@@ -1,47 +1,32 @@
 <template >
-  <div class="flex justify-center flex-col items-center">
-    <div class="gradient-background w-full h-full">
-      <div class="flex items-center justify-center flex-col gap-4 pt-4">
-        <div class="flex items-center justify-center flex-col gap-4">
-          <Button />
-          <Button type="secondary" />
-          <Button type="secondary" icon="play" />
-          <Button type="outlined" />
-          <Button type="outlined" icon="play" />
-        </div>
+  <Header />
+  <div class="flex flex-col items-center justify-center -translate-y-[80px] mt-[125px]">
+    <!-- <Featured /> -->
 
-        <div class="flex items-center justify-center flex-row gap-4">
-          <Button type="outlined circle" icon="plus" />
-          <Button type="outlined circle" icon="add" />
-          <Button type="outlined circle" icon="done" />
-          <ToolTip />
-        </div>
-
-        <div class="flex items-center justify-center flex-row gap-4">
-          <Button type="play" />
-          <Button type="group" />
-          <Button type="info" />
-          <Button type="bookmark" />
-        </div>
-
+    
+    <div class="max-w-[1440px] w-full px-4">
+      <div>
+        <p class="text-[32px] text-black font-Kanitbold absolute stroke-2 select-none">Trending Movies</p>
+        <p class="text-[32px] text-white font-Kanitbold stroke-black stroke-2 translate-x-1 -translate-y-1">Trending Movies</p>
       </div>
-    </div>
-    <div class="max-w-[1440px] w-full px-4">
       <Carousel :data="data" />
     </div>
     <div class="max-w-[1440px] w-full px-4">
-      <Carousel :data="data" />
+      <TrendingShows :data="data" />
     </div>
   </div>
 </template>
 
 <script >
+import Header from '../components/Header.vue';
+import Featured from '../components/Featured.vue';
 import Button from '../components/Button.vue';
 import ToolTip from '../components/ToolTip.vue';
 import Carousel from '../components/Carousel.vue';
+import TrendingShows from '../components/TrendingShows.vue';
 
 export default {
-  components: { Button, ToolTip, Carousel },
+  components: { Button, ToolTip, Carousel, TrendingShows, Header, Featured },
 
   data() {
     return {};
@@ -130,3 +115,4 @@ export default {
   }
 }
 </style>
+

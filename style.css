@@ -12,6 +12,16 @@
   src: url('./src/assets/fonts/Rubik.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Kanit-Regular';
+  src: url('./src/assets/fonts/Kanitregular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Kanitbold';
+  src: url('./src/assets/fonts/Kanitbold.ttf') format('truetype');
+}
+
 @layer components {
   .h1-heading {
     font-family: 'Montserrat';

@@ -14,6 +14,13 @@ window.getTopMovies = async function () {
   return response.data.results;
 };
 
+window.getTopShows = async function () {
+  const response = await axios.get(
+    'https://api.themoviedb.org/3/trending/tv/day?language=en-US&api_key=c45ad94907215e117fb3a6851e09e11c'
+  );
+  return response.data.results;
+};
+
 window.getLogo = async function (id, title) {
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/${id}/images?api_key=c45ad94907215e117fb3a6851e09e11c`
@@ -38,14 +45,12 @@ window.getVideo = async function (id) {
     `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US&api_key=c45ad94907215e117fb3a6851e09e11c`
   );
 
-  response.data.results.forEach((video) => {
+  for (const video of response.data.results) {
     if (video.type === 'Trailer') {
+      console.log(video.key);
       return video.key;
-    }
-  });
-
-  console.log(response.data.results);
-  // return response.data.results;
+    } else return null;
+  }
 };
 
 app.use(router);

@@ -1,7 +1,7 @@
 <template >
   <Header />
-  <div class="flex flex-col items-center justify-center -translate-y-[80px] mt-[125px]">
-    <!-- <Featured /> -->
+  <div class="flex flex-col items-center justify-center -translate-y-[80px] mt-[125px] gap-16">
+    <Featured />
 
     
     <div class="max-w-[1440px] w-full px-4">

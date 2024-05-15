@@ -1,14 +1,35 @@
 <template>
-  <div
-    class="overflow-hidden mxl:max-h-[40vw] smmd:max-h-[60vw] max-h-[80vw] w-full flex items-center justify-center select-none">
-    <div class="absolute max-w-[1440px] w-full">test {{ chosenMovie?.title }}</div>
-
-    <div
-      class="absolute w-full h-full bg-gradient-to-t from-[#1a1d29] to-[#1a1d2903] mxl:max-h-[40vw] smmd:max-h-[60vw] max-h-[80vw]">
+  <div class="flex flex-row max-w-[1440px] w-full px-4 items-center justify-center gap-3">
+    <div class="max-w-[30%] max-h-[369px] min-h-[369px] flex justify-end select-none">
+      <div class="absolute mt-[275px] mr-[50px]">
+        <p class="absolute text-5xl text-black select-none stroke-2 font-Kanitbold">ANIME</p>
+        <p class="text-5xl text-white translate-x-[2px] -translate-y-1 stroke-2 font-Kanitbold stroke-black">ANIME
+        </p>
+      </div>
+      <img src="../assets/images/movies.jpg" alt="Movies"
+        class="rounded-lg select-none max-h-[369px] min-h-[369px] object-cover">
     </div>
-
-    <iframe v-if="video" :src="`https://www.youtube.com/embed/${video}?rel=0&autoplay=1&mute=1`"
-      frameborder="0" class=" w-full h-[2000px]"></iframe>
+    <div class="max-w-[30%] max-h-[369px] min-h-[369px] flex justify-center select-none">
+      <!-- <p class="absolute text-5xl text-white font-Kanitbold mt-[275px]">
+        TV SHOWS
+      </p> -->
+      <div class="absolute mt-[275px]">
+        <p class="absolute text-5xl text-black select-none stroke-2 font-Kanitbold">TV SHOWS</p>
+        <p class="text-5xl text-white translate-x-[2px] -translate-y-1 stroke-2 font-Kanitbold stroke-black">TV SHOWS
+        </p>
+      </div>
+      <img src="../assets/images/tv-shows.jpg" alt="shows"
+        class="rounded-lg select-none max-h-[369px] min-h-[369px] object-cover">
+    </div>
+    <div class="max-w-[30%] max-h-[369px] min-h-[369px] select-none">
+      <div class="absolute mt-[275px] ml-[50px]">
+        <p class="absolute text-5xl text-black select-none stroke-2 font-Kanitbold">ANIME</p>
+        <p class="text-5xl text-white translate-x-[2px] -translate-y-1 stroke-2 font-Kanitbold stroke-black">ANIME
+        </p>
+      </div>
+      <img src="../assets/images/anime.jpg" alt="anime"
+        class="rounded-lg select-none max-h-[369px] min-h-[369px] object-cover">
+    </div>
   </div>
 </template>
 
@@ -20,8 +41,6 @@ export default {
     return {
       loading: false,
       data: null,
-      chosenMovie: null,
-      video: null,
     };
   },
 
@@ -29,14 +48,6 @@ export default {
 
   mounted: async function () {
     this.loading = true;
-
-    this.data = await window.getTopMovies();
-
-    const randomChoice = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
-
-    this.video = await window.getVideo(this.data[randomChoice].id);
-
-    this.chosenMovie = this.data[randomChoice];
 
     this.loading = false;
   },

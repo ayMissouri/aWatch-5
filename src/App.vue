@@ -1,12 +1,14 @@
 <script setup>
 import { RouterLink, RouterView, useRoute } from 'vue-router'
-import { SparklesIcon, FilmIcon, TvIcon, ListBulletIcon, CogIcon } from '@heroicons/vue/24/outline'
+import { SparklesIcon, FilmIcon, TvIcon, ListBulletIcon, CogIcon, ServerStackIcon } from '@heroicons/vue/24/outline'
 
 const route = useRoute();
 
 function isActive(path) {
   return route.fullPath === path;
 }
+
+const version = import.meta.env.VITE_APP_VERSION
 </script>
 
 <template>
@@ -48,12 +50,20 @@ function isActive(path) {
           </RouterLink>
         </div>
 
-        <div>
+        <div class="flex flex-col gap-4">
           <RouterLink to="/settings" class="text-white nav-tab"
             :class="isActive('/settings') ? 'router-active' : 'hover:bg-[#222c43]'">
             <CogIcon class="w-[20px] mr-2" />
             <span>Settings</span>
           </RouterLink>
+
+          <div class="version-tab text-[#d5d5d5]">
+            <ServerStackIcon class="w-[20px] mr-2 text-white" />
+            <div class="select-none">
+              aWatch v{{ version }} <br>
+              Backend v(API)
+            </div>
+          </div>
         </div>
       </div>
     </div>

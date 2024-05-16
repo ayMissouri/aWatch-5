@@ -86,9 +86,21 @@
     font-weight: 500;
     font-size: 18px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: row;
+  }
+
+  .version-tab {
+    font-family: 'Rubik';
+    padding: 8px;
+    border-radius: 7px;
+    font-size: 12px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    border: 1px solid #e0e0e03f;
   }
 
   .fill-page {

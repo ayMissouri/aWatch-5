@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView, useRoute } from 'vue-router'
 import { SparklesIcon, FilmIcon, TvIcon, ListBulletIcon, CogIcon, ServerStackIcon } from '@heroicons/vue/24/outline'
+import { debounce } from 'lodash';
 
 const route = useRoute();
 
@@ -13,7 +14,7 @@ const version = import.meta.env.VITE_APP_VERSION
 
 <template>
   <!-- DESKTOP -->
-  <div class="flex-row hidden lg:flex">
+  <div class="flex-row hidden overflow-y-hidden lg:flex">
     <div class="w-[255px] min-w-[255px] max-w-[255px] bg-[#171e2d] h-[100vh] pt-[16px] pb-[16px]">
       <!-- LOGO -->
       <div class="flex items-center justify-center">
@@ -70,8 +71,8 @@ const version = import.meta.env.VITE_APP_VERSION
 
     <div class="bg-[#171e2d] w-full">
       <div
-        class="h-[64px] min-h-[64px] max-h-[64px] flex items-center justify-center flex-row bg-[#171e2d] sticky top-0">
-        TOP OF PAGE
+        class="h-[64px] min-h-[64px] max-h-[64px] flex items-center justify-center flex-row bg-[#171e2d] sticky top-0 pr-4">
+        <SearchBar class="w-full" />
       </div>
 
       <!-- INVERSE RADIUS -->
@@ -80,12 +81,59 @@ const version = import.meta.env.VITE_APP_VERSION
         class="absolute bg-[#111621] w-[16px] h-[16px] rounded-tl-[30px] border-l-[1.5px] border-t-[1.5px] border-[#2a3349]" />
 
       <div
-        class="w-[100%] h-[calc(100vh_-_64px)] bg-[#111621] p-4 overflow-auto border-l-[1.5px] border-t-[1.5px] border-[#2a3349]">
-        <RouterView />
+        class="w-[100%] max-h-[calc(100vh_-_64px)] h-[calc(100vh_-_64px)] bg-[#111621] p-4 overflow-auto border-l-[1.5px] border-t-[1.5px] border-[#2a3349]"
+        ref="cardList">
+        <SearchResults v-if="searchResults" :searchResults="searchResults" :loading="loading" />
+        <RouterView v-else />
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import SearchBar from './components/SearchBar.vue'
+import SearchResults from './views/SearchResults.vue'
+import { debounce } from 'lodash';
+
+export default {
+  components: { SearchBar, SearchResults },
+
+  data() {
+    return {
+      searchResults: null,
+    };
+  },
+
+  props: {},
+
+  mounted() {
+    this.emitter.on("results", (data) => {
+      // console.log(data)
+      this.searchResults = data.results;
+    });
+
+    if (this.$refs.cardList) {
+      this.debouncedHandleScroll = debounce(this.handleScroll, 200);
+      this.$refs.cardList.addEventListener('scroll', this.debouncedHandleScroll);
+    }
+  },
+
+  beforeDestroy() {
+    if (this.$refs.cardList) {
+      this.$refs.cardList.removeEventListener('scroll', this.debouncedHandleScroll);
+    }
+  },
+
+  methods: {
+    handleScroll(event) {
+      const element = event.target;
+      if (element.scrollHeight - element.scrollTop <= element.clientHeight + 250) {
+        this.emitter.emit("reached-bottom", true);
+      }
+    },
+  },
+}
+</script>
 
 <style>
   body {

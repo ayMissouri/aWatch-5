@@ -21,7 +21,6 @@
       <TrendingShows :data="data" />
     </div>
   </div> -->
-
   <div class="w-full h-full text-white">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua. Consequat semper viverra nam libero justo laoreet sit. Nunc mi ipsum faucibus vitae. Velit scelerisque in

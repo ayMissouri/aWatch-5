@@ -2,9 +2,11 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import axios from 'axios';
+import mitt from 'mitt';
 
 import '../style.css';
 
+const emitter = mitt();
 const app = createApp(App);
 
 window.getTopMovies = async function () {
@@ -53,6 +55,7 @@ window.getVideo = async function (id) {
   }
 };
 
+app.config.globalProperties.emitter = emitter;
 app.use(router);
 app.mount('#app');
 

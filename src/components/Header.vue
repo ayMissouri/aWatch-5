@@ -65,12 +65,12 @@ export default {
   },
 
   created() {
-    this.debouncedSearch = debounce(this.search, 300); // 500 ms delay
+    this.debouncedSearch = debounce(this.search, 300);
   },
 
   computed: {
-    filteredResults() {
-      return this.searchResults.filter((result) => result.media_type !== 'person' && result.poster_path !== null);
+    filteredResults(data) {
+      return data.filter((result) => result.media_type !== 'person' && result.poster_path !== null);
     },
   },
   
@@ -80,7 +80,7 @@ export default {
         const response = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=c45ad94907215e117fb3a6851e09e11c&query=${this.searchInput}&page=1&include_adult=false`);
         const data = await response.json();
         console.log(data.results)
-        this.searchResults = data.results;
+        this.searchResults = filteredResults(data.results);
       }
     },
 

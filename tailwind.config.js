@@ -25,6 +25,8 @@ module.exports = {
         Kanitbold: ['Kanitbold'],
       },
 
+      display: ['group-hover'],
+
       colors: {
         primary500: '#00386c',
         primary400: '#0063e5',

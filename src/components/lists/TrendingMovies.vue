@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import Spinner from './Spinner.vue'
+import Spinner from '../Spinner.vue'
 
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay } from 'swiper/modules'

@@ -33,7 +33,7 @@
       slidesPerView: 4.2,
       spaceBetween: 20,
     },
-  }" class="mySwiper">
+  }" class="w-full mySwiper">
     <div class=" absolute h-full bg-gradient-to-l from-background to-[#00000002] w-[20px] right-0 z-50 top-0" />
     <swiper-slide v-for="slide in data" :key="slide"
       class="border-[2px] border-[#272c3d] rounded-md hover:border-link cursor-pointer">
@@ -68,7 +68,7 @@
 </template>
 <!-- slide.first_air_date.substring(0, 4) -->
 <script>
-import Spinner from './Spinner.vue'
+import Spinner from '../Spinner.vue'
 
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay } from 'swiper/modules'
@@ -98,12 +98,7 @@ export default {
 
   methods: {
     goToStream(id, title) {
-      // this.$router.push(`https://awatch.fun/#/media/tmdb-movie-${id}-${title}`);
-      // if (title === "Shōgun") {
-      //   window.location.href = `https://awatch.fun/#/media/tmdb-tv-${id}-Shogun`
-      //   return;
-      // }
-      window.location.href = `https://awatch.fun/#/media/tmdb-tv-${id}`
+      
     },
 
     isComingSoon(airDate) {
@@ -122,16 +117,6 @@ export default {
 
     this.data = await window.getTopShows();
 
-    // console.log(this.data)
-    
-    // if (this.data) {
-    //   for (const element of this.data) {
-    //     const image = await window.getLogo(element.id, element.title);
-    //     console.log(image)
-    //     element.logo = image;
-    //   }
-    // }
-
     this.loading = false;
   },
 }
@@ -139,7 +124,7 @@ export default {
 
 <style>
   .swiper {
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
   }
 

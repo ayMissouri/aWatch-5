@@ -1,6 +1,6 @@
 <template>
   <div
-    class="container relative flex transition-all ease-in-out rounded-md cursor-pointer select-none hover:transform hover:scale-105">
+    class="container relative flex transition-all ease-in-out rounded-md cursor-pointer select-none hover:transform hover:scale-105 min-h-[150px]">
 
     <div
       class="absolute left-2 top-2 px-[4px] py-[2px] rounded-full font-Rubik border-[1px] opacity-85 text-sm font-medium"

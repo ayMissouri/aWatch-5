@@ -69,7 +69,7 @@ const version = import.meta.env.VITE_APP_VERSION
       </div>
     </div>
 
-    <div class="bg-[#171e2d] w-full">
+    <div class="bg-[#171e2d] w-full overflow-hidden">
       <div
         class="h-[64px] min-h-[64px] max-h-[64px] flex items-center justify-center flex-row bg-[#171e2d] sticky top-0 pr-4">
         <SearchBar class="w-full" />

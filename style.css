@@ -78,4 +78,20 @@
     letter-spacing: 0.75px;
     text-transform: uppercase;
   }
+
+  .nav-tab {
+    font-family: 'Rubik';
+    padding: 8px;
+    border-radius: 7px;
+    font-weight: 500;
+    font-size: 18px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .fill-page {
+    height: calc(100% - 64px);
+  }
 }

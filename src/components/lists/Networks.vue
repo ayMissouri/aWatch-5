@@ -3,45 +3,47 @@
     <Spinner class="w-[50px] h-[50px]" />
   </div>
 
-
-  <swiper :slidesPerView="3.5" :spaceBetween="30" :modules="modules" :loop="true" :breakpoints="{
-    '0': {
-      slidesPerView: 1.2,
-      spaceBetween: 20,
-    },
-    '400': {
-      slidesPerView: 1.5,
-      spaceBetween: 20,
-    },
-    '530': {
-      slidesPerView: 1.9,
-      spaceBetween: 20,
-    },
-    '680': {
-      slidesPerView: 2.2,
-      spaceBetween: 20,
-    },
-    '830': {
-      slidesPerView: 2.8,
-      spaceBetween: 20,
-    },
-    '950': {
+  <swiper
+    :slidesPerView="6"
+    :spaceBetween="30"
+    :modules="modules"
+    :breakpoints="{
+    '1024': {
       slidesPerView: 3.2,
       spaceBetween: 20,
     },
-    '1024': {
+    '1324': {
       slidesPerView: 4.2,
       spaceBetween: 20,
     },
-  }" class="w-full mySwiper">
-    <div class=" absolute h-full bg-gradient-to-l from-background to-[#00000002] w-[20px] right-0 z-50 top-0" />
-    <swiper-slide v-for="slide in data" :key="slide"
-      class="border-[2px] border-[#272c3d] rounded-md hover:border-link cursor-pointer">
-      <div class="overflow-hidden rounded-md zoom-effect" @click="false">
-        <div
-          class=" absolute h-[100px] bg-gradient-to-t from-[#1a1d29ac] to-[#00000002] w-full bottom-0 z-40 rounded-b-md" />
-        <img :src="`https://image.tmdb.org/t/p/w780${slide.backdrop_path}`"
-          class="object-cover w-full h-full rounded-md select-none background-image">
+    '1724': {
+      slidesPerView: 5.2,
+      spaceBetween: 20,
+    },
+    '2124': {
+      slidesPerView: 7.2,
+      spaceBetween: 20,
+    },
+    '2524': {
+      slidesPerView: 10.2,
+      spaceBetween: 20,
+    },
+    '3524': {
+      slidesPerView: 11.2,
+      spaceBetween: 20,
+    },
+    '4224': {
+      slidesPerView: 12.2,
+      spaceBetween: 20,
+    },
+  }"
+    class="mySwiper"
+  >
+    <swiper-slide v-for="slide in data" :key="slide" class="relative flex items-center justify-center w-56 h-32 p-8 transition duration-300 ease-in-out scale-100 bg-gray-800 shadow cursor-pointer transform-gpu sm:h-36 sm:w-72 rounded-xl border-[2px] border-[#272c3d] hover:border-link">
+      <div class="relative w-full h-full">
+        <span class="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
+          <img :src="slide.attributes.logo_url" class="relative z-40 w-full h-full select-none" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;">
+        </span>
       </div>
     </swiper-slide>
   </swiper>
@@ -51,8 +53,8 @@
 import Spinner from '../Spinner.vue'
 
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Autoplay } from 'swiper/modules'
 import 'swiper/css';
+import 'swiper/css/pagination';
 
 export default {
   data() {
@@ -70,7 +72,7 @@ export default {
 
   setup() {
     return {
-      modules: [Autoplay],
+      modules: [],
     };
   },
 
@@ -81,7 +83,7 @@ export default {
   mounted: async function () {
     this.loading = true;
 
-    this.data = await window.getTopShows();
+    this.data = await window.getNetworks();
 
     this.loading = false;
   },
@@ -108,7 +110,6 @@ export default {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
 .zoom-effect .background-image {

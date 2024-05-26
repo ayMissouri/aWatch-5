@@ -4,6 +4,8 @@ import router from './router';
 import axios from 'axios';
 import mitt from 'mitt';
 
+const api_key = import.meta.env.VITE_TMDB_API_KEY;
+
 import '../style.css';
 
 const emitter = mitt();
@@ -11,21 +13,26 @@ const app = createApp(App);
 
 window.getTopMovies = async function () {
   const response = await axios.get(
-    'https://api.themoviedb.org/3/trending/movie/day?language=en-US&api_key=c45ad94907215e117fb3a6851e09e11c'
+    `https://api.themoviedb.org/3/trending/movie/day?language=en-US&api_key=${api_key}`
   );
   return response.data.results;
 };
 
 window.getTopShows = async function () {
   const response = await axios.get(
-    'https://api.themoviedb.org/3/trending/tv/day?language=en-US&api_key=c45ad94907215e117fb3a6851e09e11c'
+    `https://api.themoviedb.org/3/trending/tv/day?language=en-US&api_key=${api_key}`
   );
   return response.data.results;
 };
 
+window.getNetworks = async function () {
+  const response = await axios.get(`https://api.awatch.fun/api/networks`);
+  return response.data.data;
+};
+
 window.getLogo = async function (id, title) {
   const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/${id}/images?api_key=c45ad94907215e117fb3a6851e09e11c`
+    `https://api.themoviedb.org/3/movie/${id}/images?api_key=${api_key}`
   );
 
   let finalLogo = null;
@@ -44,7 +51,7 @@ window.getLogo = async function (id, title) {
 
 window.getVideo = async function (id) {
   const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US&api_key=c45ad94907215e117fb3a6851e09e11c`
+    `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US&api_key=${api_key}`
   );
 
   for (const video of response.data.results) {

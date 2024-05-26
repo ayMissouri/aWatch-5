@@ -1,31 +1,9 @@
 <template >
-  <!-- <Header /> -->
-  <!-- <div class="flex flex-col items-center justify-center -translate-y-[80px] mt-[125px] gap-6">
-    <Featured />
-
-
-    <div class="max-w-[1440px] w-full px-4">
-      <div>
-        <p class="text-[32px] text-black font-Kanitbold absolute stroke-2 select-none">Trending Movies</p>
-        <p class="text-[32px] text-white font-Kanitbold stroke-black stroke-2 translate-x-1 -translate-y-1">Trending
-          Movies</p>
-      </div>
-      <TrendingMovies :data="data" />
-    </div>
-    <div class="max-w-[1440px] w-full px-4">
-      <div>
-        <p class="text-[32px] text-black font-Kanitbold absolute stroke-2 select-none">Trending Shows</p>
-        <p class="text-[32px] text-white font-Kanitbold stroke-black stroke-2 translate-x-1 -translate-y-1">Trending
-          Shows</p>
-      </div>
-      <TrendingShows :data="data" />
-    </div>
-  </div> -->
   <div class="flex flex-col gap-6 overflow-hidden text-white">
     <div>
       <div class="flex flex-row gap-2">
         <ArrowTrendingUpIcon class="w-[24px]" />
-        <div>
+        <div class="relative">
           <p
             class="text-[32px] text-transparent bg-gradient-to-r from-[#ff2a2a] via-[#ff2fd5] to-[#8c00ff] bg-clip-text animate-gradient font-Kanitbold absolute stroke-2 select-none">
             Trending Movies</p>
@@ -42,7 +20,7 @@
     <div>
       <div class="flex flex-row gap-2">
         <ArrowTrendingUpIcon class="w-[24px]" />
-        <div>
+        <div class="relative">
           <p
             class="text-[32px] text-transparent bg-gradient-to-r from-[#2525ff] via-[#f763ff] to-[#ff4e4e] bg-clip-text animate-gradient font-Kanitbold absolute stroke-2 select-none">
             Trending Shows</p>
@@ -58,7 +36,7 @@
 
     <div>
       <div class="flex flex-row gap-2">
-        <ArrowTrendingUpIcon class="w-[24px]" />
+        <GlobeAltIcon class="w-[24px]" />
         <p class="text-[32px] text-white font-Kanitbold stroke-black stroke-2 translate-x-[1px] -translate-y-[2px]">
           Networks</p>
       </div>
@@ -76,7 +54,7 @@ import TrendingMovies from '../components/lists/TrendingMovies.vue';
 import TrendingShows from '../components/lists/TrendingShows.vue';
 import Networks from '../components/lists/Networks.vue';
 
-import { ArrowTrendingUpIcon } from '@heroicons/vue/24/outline'
+import { ArrowTrendingUpIcon, GlobeAltIcon } from '@heroicons/vue/24/outline'
 
 export default {
   components: { Button, ToolTip, TrendingMovies, TrendingShows, Header, Featured, ArrowTrendingUpIcon, Networks },

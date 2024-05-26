@@ -33,6 +33,18 @@
       slidesPerView: 4.2,
       spaceBetween: 20,
     },
+    '1524': {
+      slidesPerView: 5.2,
+      spaceBetween: 20,
+    },
+    '2024': {
+      slidesPerView: 6.2,
+      spaceBetween: 20,
+    },
+    '2524': {
+      slidesPerView: 7.2,
+      spaceBetween: 20,
+    },
   }" class="w-full mySwiper">
     <div class=" absolute h-full bg-gradient-to-l from-background to-[#00000002] w-[20px] right-0 z-50 top-0" />
     <swiper-slide v-for="slide in data" :key="slide"

@@ -15,14 +15,11 @@
       <TrendingMovies />
     </div>
 
-    <hr class="h-px bg-gray-200 border-0 dark:bg-[#2a3349]">
-
     <div>
       <div class="flex flex-row gap-2">
         <ArrowTrendingUpIcon class="w-[24px]" />
         <div class="relative">
-          <p
-            class="text-[32px] text-transparent bg-gradient-to-r from-[#2525ff] via-[#f763ff] to-[#ff4e4e] bg-clip-text animate-gradient font-Kanitbold absolute stroke-2 select-none">
+          <p class="text-[32px] text-transparent bg-gradient-to-r from-[#2525ff] via-[#f763ff] to-[#ff4e4e] bg-clip-text animate-gradient font-Kanitbold absolute stroke-2 select-none">
             Trending Shows</p>
           <p class="text-[32px] text-white font-Kanitbold stroke-black stroke-2 translate-x-[1px] -translate-y-[2px]">
             Trending
@@ -30,6 +27,20 @@
         </div>
       </div>
       <TrendingShows />
+    </div>
+    <hr class="h-px bg-gray-200 border-0 dark:bg-[#2a3349]">
+    
+    <div>
+      <div class="flex flex-row gap-2">
+        <SparklesIcon class="w-[24px]" />
+        <div class="relative">
+          <p class="text-[32px] text-transparent bg-gradient-to-r from-[#2525ff] via-[#f763ff] to-[#ff4e4e] bg-clip-text animate-gradient font-Kanitbold absolute stroke-2 select-none">
+            aWatch</p>
+          <p class="text-[32px] text-white font-Kanitbold stroke-black stroke-2 translate-x-[1px] -translate-y-[2px]">
+            aWatch Team Recommendations</p>
+        </div>
+      </div>
+      <!-- <Networks /> -->
     </div>
 
     <hr class="h-px bg-gray-200 border-0 dark:bg-[#2a3349]">
@@ -42,6 +53,35 @@
       </div>
       <Networks />
     </div>
+
+    <div>
+      <div class="flex flex-row gap-2">
+        <GlobeAltIcon class="w-[24px]" />
+        <p class="text-[32px] text-white font-Kanitbold stroke-black stroke-2 translate-x-[1px] -translate-y-[2px]">
+          Studios</p>
+      </div>
+      <Studios />
+    </div>
+    
+    <hr class="h-px bg-gray-200 border-0 dark:bg-[#2a3349]">
+
+    <div>
+      <div class="flex flex-row gap-2">
+        <FolderIcon class="w-[24px]" />
+        <p class="text-[32px] text-white font-Kanitbold stroke-black stroke-2 translate-x-[1px] -translate-y-[2px]">
+          Discover Movies</p>
+      </div>
+      <MovieGenres />
+    </div>
+
+    <div>
+      <div class="flex flex-row gap-2">
+        <FolderIcon class="w-[24px]" />
+        <p class="text-[32px] text-white font-Kanitbold stroke-black stroke-2 translate-x-[1px] -translate-y-[2px]">
+          Discover Series</p>
+      </div>
+      <SeriesGenres />
+    </div>
   </div>
 </template>
 
@@ -53,11 +93,29 @@ import ToolTip from '../components/ToolTip.vue';
 import TrendingMovies from '../components/lists/TrendingMovies.vue';
 import TrendingShows from '../components/lists/TrendingShows.vue';
 import Networks from '../components/lists/Networks.vue';
+import Studios from '../components/lists/Studios.vue';
+import MovieGenres from '../components/lists/MovieGenres.vue';
+import SeriesGenres from '../components/lists/SeriesGenres.vue';
 
-import { ArrowTrendingUpIcon, GlobeAltIcon } from '@heroicons/vue/24/outline'
+import { ArrowTrendingUpIcon, GlobeAltIcon, FolderIcon, SparklesIcon } from '@heroicons/vue/24/outline'
 
 export default {
-  components: { Button, ToolTip, TrendingMovies, TrendingShows, Header, Featured, ArrowTrendingUpIcon, Networks },
+  components: { 
+    Button, 
+    ToolTip, 
+    TrendingMovies, 
+    TrendingShows, 
+    Header, 
+    Featured, 
+    ArrowTrendingUpIcon, 
+    Networks, 
+    Studios, 
+    GlobeAltIcon, 
+    MovieGenres,
+    SeriesGenres,
+    FolderIcon,
+    SparklesIcon,
+  },
 
   data() {
     return {};

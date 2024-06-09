@@ -30,6 +30,21 @@ window.getNetworks = async function () {
   return response.data.data;
 };
 
+window.getStudios = async function () {
+  const response = await axios.get(`https://api.awatch.fun/api/studios`);
+  return response.data.data;
+};
+
+window.getMovieGenres = async function () {
+  const response = await axios.get(`https://api.awatch.fun/api/movie-genres`);
+  return response.data.data;
+};
+
+window.getSeriesGenres = async function () {
+  const response = await axios.get(`https://api.awatch.fun/api/tv-genres`);
+  return response.data.data;
+};
+
 window.getLogo = async function (id, title) {
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/${id}/images?api_key=${api_key}`

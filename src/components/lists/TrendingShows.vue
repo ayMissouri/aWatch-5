@@ -94,6 +94,12 @@ export default {
     }
   },
 
+  computed: {
+    async filterData() {
+      return this.data.filter((item) => item.backdrop_path !== null);
+    }
+  },
+
   components: {
     Spinner,
     Swiper,
@@ -180,4 +186,4 @@ export default {
 <!-- :autoplay="{
     delay: 3000,
     disableOnInteraction: false,
-  }" -->
+  }" -->import { data } from 'autoprefixer';

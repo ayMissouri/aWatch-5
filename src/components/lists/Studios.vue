@@ -84,7 +84,7 @@ export default {
   mounted: async function () {
     this.loading = true;
 
-    this.data = await window.getNetworks();
+    this.data = await window.getStudios();
 
     this.loading = false;
   },

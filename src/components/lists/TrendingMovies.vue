@@ -55,7 +55,6 @@
       <div class="absolute z-50 flex flex-col gap-1 px-3 text-left bottom-1">
         <p class="font-semibold text-white body-review title-text font-Rubik">
           {{ slide.title }}
-          <!-- <span class="body-small text-link">{{ slide.original_language !== 'en' ?  `(${slide.original_title})` : '' }}</span> -->
         </p>
         <div class="flex flex-row items-center gap-2 select-none">
           <div class="px-2 font-semibold rounded bg-link text-neutral500 body-small">{{ slide.release_date.substring(0, 4) }}</div>

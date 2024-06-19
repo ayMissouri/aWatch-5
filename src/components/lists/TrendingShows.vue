@@ -1,6 +1,6 @@
 <template>
   <div v-if="loading" class="flex items-center justify-center h-[156px]">
-    <Spinner class="w-[50px] h-[50px]" />
+    <l-grid size="80" speed="3.5" color="#67bdff" />
   </div>
 
 
@@ -80,7 +80,7 @@
 </template>
 <!-- slide.first_air_date.substring(0, 4) -->
 <script>
-import Spinner from '../Spinner.vue'
+import 'ldrs/grid'
 
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay } from 'swiper/modules'
@@ -101,7 +101,6 @@ export default {
   },
 
   components: {
-    Spinner,
     Swiper,
     SwiperSlide,
   },
@@ -136,6 +135,7 @@ export default {
     this.data = await window.getTopShows();
 
     this.loading = false;
+    this.$emit('loaded');
   },
 }
 </script>

@@ -1,13 +1,9 @@
 <template>
   <div v-if="loading" class="flex items-center justify-center h-[156px]">
-    <Spinner class="w-[50px] h-[50px]" />
+    <l-grid size="80" speed="3.5" color="#67bdff" />
   </div>
 
-  <swiper
-    :slidesPerView="6"
-    :spaceBetween="30"
-    :modules="modules"
-    :breakpoints="{
+  <swiper :slidesPerView="6" :spaceBetween="30" :modules="modules" :breakpoints="{
     '1024': {
       slidesPerView: 3.2,
       spaceBetween: 20,
@@ -36,14 +32,15 @@
       slidesPerView: 12.2,
       spaceBetween: 20,
     },
-  }"
-    class="mySwiper"
-  >
+  }" class="mySwiper">
     <div class=" absolute h-full bg-gradient-to-l from-background to-[#00000002] w-[20px] right-0 z-50 top-0" />
-    <swiper-slide v-for="slide in data" :key="slide" class="relative flex items-center justify-center w-56 h-32 p-8 transition duration-300 ease-in-out scale-100 bg-gray-800 shadow cursor-pointer transform-gpu sm:h-36 sm:w-72 rounded-xl border-[2px] border-[#272c3d] hover:border-link">
+    <swiper-slide v-for="slide in data" :key="slide"
+      class="relative flex items-center justify-center w-56 h-32 p-8 transition duration-300 ease-in-out scale-100 bg-gray-800 shadow cursor-pointer transform-gpu sm:h-36 sm:w-72 rounded-xl border-[2px] border-[#272c3d] hover:border-link">
       <div class="relative w-full h-full">
-        <span class="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
-          <img :src="slide.attributes.logo_url" class="relative z-40 w-full h-full select-none" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;">
+        <span
+          class="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
+          <img :src="slide.attributes.logo_url" class="relative z-40 w-full h-full select-none"
+            style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;">
         </span>
       </div>
     </swiper-slide>
@@ -51,7 +48,7 @@
 </template>
 <!-- slide.first_air_date.substring(0, 4) -->
 <script>
-import Spinner from '../Spinner.vue'
+import 'ldrs/grid'
 
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
@@ -66,7 +63,6 @@ export default {
   },
 
   components: {
-    Spinner,
     Swiper,
     SwiperSlide,
   },
@@ -87,6 +83,7 @@ export default {
     this.data = await window.getStudios();
 
     this.loading = false;
+    this.$emit('loaded');
   },
 }
 </script>

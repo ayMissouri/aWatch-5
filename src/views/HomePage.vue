@@ -1,5 +1,10 @@
 <template >
   <div class="flex flex-col gap-6 overflow-hidden text-white">
+    <div v-if="!allLoaded"
+      class="absolute w-[calc(100%_-_280px)] h-[calc(100%_-_82px)] bg-[#111621] z-[999] flex items-center justify-center">
+      <l-grid size="150" speed="1.5" color="#67bdff" />
+    </div>
+
     <div>
       <div class="flex flex-row gap-2">
         <ArrowTrendingUpIcon class="w-[24px]" />
@@ -12,29 +17,31 @@
             Movies</p>
         </div>
       </div>
-      <TrendingMovies />
+      <TrendingMovies @loaded="moviesLoaded = true" />
     </div>
 
     <div>
       <div class="flex flex-row gap-2">
         <ArrowTrendingUpIcon class="w-[24px]" />
         <div class="relative">
-          <p class="text-[32px] text-transparent bg-gradient-to-r from-[#2525ff] via-[#f763ff] to-[#ff4e4e] bg-clip-text animate-gradient font-Kanitbold absolute stroke-2 select-none">
+          <p
+            class="text-[32px] text-transparent bg-gradient-to-r from-[#2525ff] via-[#f763ff] to-[#ff4e4e] bg-clip-text animate-gradient font-Kanitbold absolute stroke-2 select-none">
             Trending Shows</p>
           <p class="text-[32px] text-white font-Kanitbold stroke-black stroke-2 translate-x-[1px] -translate-y-[2px]">
             Trending
             Shows</p>
         </div>
       </div>
-      <TrendingShows />
+      <TrendingShows @loaded="showsLoaded = true" />
     </div>
     <hr class="h-px bg-gray-200 border-0 dark:bg-[#2a3349]">
-    
+
     <div>
       <div class="flex flex-row gap-2">
         <SparklesIcon class="w-[24px]" />
         <div class="relative">
-          <p class="text-[32px] text-transparent bg-gradient-to-r from-[#2525ff] via-[#f763ff] to-[#ff4e4e] bg-clip-text animate-gradient font-Kanitbold absolute stroke-2 select-none">
+          <p
+            class="text-[32px] text-transparent bg-gradient-to-r from-[#2525ff] via-[#f763ff] to-[#ff4e4e] bg-clip-text animate-gradient font-Kanitbold absolute stroke-2 select-none">
             aWatch</p>
           <p class="text-[32px] text-white font-Kanitbold stroke-black stroke-2 translate-x-[1px] -translate-y-[2px]">
             aWatch Team Recommendations</p>
@@ -51,7 +58,7 @@
         <p class="text-[32px] text-white font-Kanitbold stroke-black stroke-2 translate-x-[1px] -translate-y-[2px]">
           Networks</p>
       </div>
-      <Networks />
+      <Networks @loaded="networksLoaded = true" />
     </div>
 
     <div>
@@ -60,9 +67,9 @@
         <p class="text-[32px] text-white font-Kanitbold stroke-black stroke-2 translate-x-[1px] -translate-y-[2px]">
           Studios</p>
       </div>
-      <Studios />
+      <Studios @loaded="studiosLoaded = true" />
     </div>
-    
+
     <hr class="h-px bg-gray-200 border-0 dark:bg-[#2a3349]">
 
     <div>
@@ -71,7 +78,7 @@
         <p class="text-[32px] text-white font-Kanitbold stroke-black stroke-2 translate-x-[1px] -translate-y-[2px]">
           Discover Movies</p>
       </div>
-      <MovieGenres />
+      <MovieGenres @loaded="movieGenresLoaded = true" />
     </div>
 
     <div>
@@ -80,7 +87,7 @@
         <p class="text-[32px] text-white font-Kanitbold stroke-black stroke-2 translate-x-[1px] -translate-y-[2px]">
           Discover Series</p>
       </div>
-      <SeriesGenres />
+      <SeriesGenres @loaded="seriesGenresLoaded = true" />
     </div>
   </div>
 </template>
@@ -96,6 +103,8 @@ import Networks from '../components/lists/Networks.vue';
 import Studios from '../components/lists/Studios.vue';
 import MovieGenres from '../components/lists/MovieGenres.vue';
 import SeriesGenres from '../components/lists/SeriesGenres.vue';
+
+import 'ldrs/grid'
 
 import { ArrowTrendingUpIcon, GlobeAltIcon, FolderIcon, SparklesIcon } from '@heroicons/vue/24/outline'
 
@@ -118,7 +127,14 @@ export default {
   },
 
   data() {
-    return {};
+    return {
+      moviesLoaded: false,
+      showsLoaded: false,
+      networksLoaded: false,
+      studiosLoaded: false,
+      movieGenresLoaded: false,
+      seriesGenresLoaded: false,
+    };
   },
 
   async mounted() {
@@ -147,7 +163,13 @@ export default {
         observer.observe(element);
       });
     },
-  }
+  },
+
+  computed: {
+    allLoaded() {
+      return this.moviesLoaded && this.showsLoaded && this.networksLoaded && this.studiosLoaded && this.movieGenresLoaded && this.seriesGenresLoaded;
+    },
+  },
 }
 </script>
 

@@ -36,7 +36,7 @@
     </div>
     <hr class="h-px bg-gray-200 border-0 dark:bg-[#2a3349]">
 
-    <div>
+    <div v-if="false">
       <div class="flex flex-row gap-2">
         <SparklesIcon class="w-[24px]" />
         <div class="relative">
@@ -50,7 +50,7 @@
       <!-- <Networks /> -->
     </div>
 
-    <hr class="h-px bg-gray-200 border-0 dark:bg-[#2a3349]">
+    <hr v-if="false" class="h-px bg-gray-200 border-0 dark:bg-[#2a3349]">
 
     <div>
       <div class="flex flex-row gap-2">

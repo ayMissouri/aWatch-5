@@ -21,7 +21,7 @@
       spaceBetween: 20,
     },
     '2524': {
-      slidesPerView: 10.2,
+      slidesPerView: 8.2,
       spaceBetween: 20,
     },
     '3524': {
@@ -43,7 +43,7 @@
       </span>
       <div class="absolute inset-0 z-10 w-full h-full transition duration-300 bg-gray-800 bg-opacity-30"></div>
       <div
-        class="relative z-20 w-full text-2xl font-bold text-center text-white truncate whitespace-normal sm:text-3xl">{{
+        class="relative z-20 w-full text-2xl font-bold text-center text-white whitespace-normal sm:text-3xl">{{
         slide.attributes.name }}</div>
     </swiper-slide>
   </swiper>

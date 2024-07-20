@@ -43,7 +43,7 @@ module.exports = {
         neutral200: '#c8c9cb',
         neutral100: '#f9f9f9',
         neutralMinus100: '#ffffff',
-        link: '#67bdff',
+        link: '#67bdffbe',
         disabled: '#5f6169',
         background: '#1a1d29',
       },

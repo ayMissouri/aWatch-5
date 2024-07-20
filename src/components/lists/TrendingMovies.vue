@@ -64,7 +64,7 @@
                   d="M7.75 13.352L2.96 16L3.87533 10.392L0 6.42067L5.35533 5.602L7.75 0.5L10.1447 5.602L15.5 6.42067L11.6247 10.392L12.54 16L7.75 13.352Z"
                   fill="#30333e" />
               </svg>
-              {{ slide.vote_average.toString().substring(0, 3) }}
+              {{ slide.vote_average.toString().substring(0, 3) === '0' ? 'N/A' : slide.vote_average.toString().substring(0, 3) }}
             </div>
             <div class="px-2 font-semibold uppercase rounded bg-link text-neutral500 body-small">{{
               slide.original_language }}</div>

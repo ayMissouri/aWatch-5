@@ -119,16 +119,6 @@ export default {
 
     this.data = await window.getTopMovies();
 
-    // console.log(this.data)
-    
-    // if (this.data) {
-    //   for (const element of this.data) {
-    //     const image = await window.getLogo(element.id, element.title);
-    //     console.log(image)
-    //     element.logo = image;
-    //   }
-    // }
-
     this.loading = false;
     this.$emit('loaded');
   },

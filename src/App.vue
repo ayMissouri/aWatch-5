@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, RouterView, useRoute } from 'vue-router'
-import { SparklesIcon, FilmIcon, TvIcon, ListBulletIcon, CogIcon, ServerStackIcon } from '@heroicons/vue/24/outline'
+import { SparklesIcon, FilmIcon, TvIcon, ListBulletIcon, CogIcon, ServerStackIcon, UserCircleIcon } from '@heroicons/vue/24/outline'
 import { debounce } from 'lodash';
 
 const route = useRoute();
@@ -14,8 +14,8 @@ const version = import.meta.env.VITE_APP_VERSION
 
 <template>
   <!-- DESKTOP -->
-  <div class="flex-row hidden overflow-y-hidden lg:flex">
-    <div class="w-[255px] min-w-[255px] max-w-[255px] bg-[#171e2d] h-[100vh] pt-[16px] pb-[16px]">
+  <div class="flex-row overflow-x-hidden overflow-y-hidden flex">
+    <div class="w-[255px] min-w-[255px] max-w-[255px] bg-[#171e2d] h-[100vh] pt-[16px] pb-[16px] hidden lg:flex lg:flex-col">
       <!-- LOGO -->
       <div class="flex items-center justify-center">
         <a href="/"
@@ -32,7 +32,7 @@ const version = import.meta.env.VITE_APP_VERSION
             <span>Home</span>
           </RouterLink>
 
-          <RouterLink to="/explore?type=movie" class="text-white nav-tab"
+          <!-- <RouterLink to="/explore?type=movie" class="text-white nav-tab"
             :class="isActive('/explore?type=movie') ? 'router-active' : 'hover:bg-[#222c43]'">
             <FilmIcon class="w-[20px] mr-2" />
             <span>Movies</span>
@@ -42,12 +42,12 @@ const version = import.meta.env.VITE_APP_VERSION
             :class="isActive('/explore?type=tv') ? 'router-active' : 'hover:bg-[#222c43]'">
             <TvIcon class="w-[20px] mr-2" />
             <span>Tv Shows</span>
-          </RouterLink>
+          </RouterLink> -->
 
-          <RouterLink to="/list" class="text-white nav-tab"
-            :class="isActive('/list') ? 'router-active' : 'hover:bg-[#222c43]'">
-            <ListBulletIcon class="w-[20px] mr-2" />
-            <span>Watchlist</span>
+          <RouterLink to="/profile" class="text-white nav-tab"
+            :class="isActive('/profile') ? 'router-active' : 'hover:bg-[#222c43]'">
+            <UserCircleIcon class="w-[20px] mr-2" />
+            <span>Profile</span>
           </RouterLink>
         </div>
 
@@ -69,16 +69,16 @@ const version = import.meta.env.VITE_APP_VERSION
       </div>
     </div>
 
-    <div class="bg-[#171e2d] w-full overflow-hidden">
+    <div class="bg-[#171e2d] w-full lg:w-[calc(100vw_-_255px)]">
       <div
-        class="h-[64px] min-h-[64px] max-h-[64px] flex items-center justify-center flex-row bg-[#171e2d] sticky top-0 pr-4">
+        class="h-[64px] min-h-[64px] max-h-[64px] flex items-center justify-center flex-row bg-[#171e2d] sticky top-0 px-4 lg:px-0 lg:pr-4">
         <SearchBar class="w-full" />
       </div>
 
       <!-- INVERSE RADIUS -->
-      <div class="absolute bg-[#171e2d] w-[16px] h-[16px]" />
+      <div class="absolute bg-[#171e2d] w-[16px] h-[16px] hidden lg:flex" />
       <div
-        class="absolute bg-[#111621] w-[16px] h-[16px] rounded-tl-[30px] border-l-[1.5px] border-t-[1.5px] border-[#2a3349]" />
+        class="absolute bg-[#111621] w-[16px] h-[16px] rounded-tl-[30px] border-l-[1.5px] border-t-[1.5px] border-[#2a3349] hidden lg:flex" />
 
       <div
         class="w-[100%] max-h-[calc(100vh_-_64px)] h-[calc(100vh_-_64px)] bg-[#111621] p-4 overflow-auto border-l-[1.5px] border-t-[1.5px] border-[#2a3349]"

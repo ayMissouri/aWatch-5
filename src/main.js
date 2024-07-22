@@ -3,6 +3,8 @@ import App from './App.vue';
 import router from './router';
 import axios from 'axios';
 import mitt from 'mitt';
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 
 const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
@@ -18,6 +20,13 @@ window.getTopMovies = async function () {
   return response.data.results;
 };
 
+window.getExploreMovies = async function (genres, year, order, country, type, page) {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_genres=${genres}`
+  );
+  return response.data.data;
+};
+
 window.getTopShows = async function () {
   const response = await axios.get(
     `https://api.themoviedb.org/3/trending/tv/day?language=en-US&api_key=${api_key}`
@@ -26,22 +35,23 @@ window.getTopShows = async function () {
 };
 
 window.getNetworks = async function () {
-  const response = await axios.get(`https://api.awatch.fun/api/networks`);
+  const response = await axios.get(`https://api.awatch.fun/lists/name/networks`);
+  console.log(response.data.data);
   return response.data.data;
 };
 
 window.getStudios = async function () {
-  const response = await axios.get(`https://api.awatch.fun/api/studios`);
+  const response = await axios.get(`https://api.awatch.fun/lists/name/studios`);
   return response.data.data;
 };
 
 window.getMovieGenres = async function () {
-  const response = await axios.get(`https://api.awatch.fun/api/movie-genres`);
+  const response = await axios.get(`https://api.awatch.fun/lists/name/movie-genres`);
   return response.data.data;
 };
 
 window.getSeriesGenres = async function () {
-  const response = await axios.get(`https://api.awatch.fun/api/tv-genres`);
+  const response = await axios.get(`https://api.awatch.fun/lists/name/tv-genres`);
   return response.data.data;
 };
 
@@ -77,8 +87,41 @@ window.getVideo = async function (id) {
   }
 };
 
+window.signUp = async function (name, email, password) {
+  // console.log(name, email, password);
+  const response = await axios.post('https://api.awatch.fun/user/signup', {
+    name: name,
+    email: email,
+    password: password,
+  });
+  return response.data;
+};
+
+window.login = async function (name,  password) {
+  // console.log(name, email, password);
+  const response = await axios.post('https://api.awatch.fun/user/login', {
+    email: name,
+    password: password,
+  });
+  return response.data;
+};
+
+window.getUserToken = function () {
+  return localStorage.getItem('token');
+}
+
+window.getProfile = async function () {
+  const response = await axios.get('https://api.awatch.fun/user', {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
+  return response.data;
+}
+
 app.config.globalProperties.emitter = emitter;
 app.use(router);
+app.use(ElementPlus)
 app.mount('#app');
 
 // c45ad94907215e117fb3a6851e09e11c

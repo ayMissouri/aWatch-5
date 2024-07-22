@@ -11,17 +11,26 @@
     <signup v-if="tab === 'signup'" />
   </div>
 
-  <div v-if="token">
-    {{ userData }}
+  <div v-if="token" class="flex w-full h-full items-start justify-start">
+    <loggedIn :user="userData?.data" />
+
+    <div v-if="loading"
+    class="absolute w-[calc(100%_-_280px)] h-[calc(100%_-_82px)] bg-[#111621] z-[999] flex items-center justify-center">
+    <l-grid size="150" speed="1.5" color="#67bdff" />
   </div>
+</div>
+{{ userData }}
 </template>
 
 <script>
 import signup from '../components/Profile/signup.vue'
 import login from '../components/Profile/login.vue'
+import loggedIn from '../components/Profile/loggedIn.vue'
+
+import 'ldrs/grid'
 
 export default {
-  components: {signup, login},
+  components: {signup, login, loggedIn},
 
   data() {
     return {

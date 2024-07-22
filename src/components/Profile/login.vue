@@ -49,12 +49,18 @@ export default {
       this.buttonLoading = true
       this.error = null
 
-      this.signupResponse = await window.login(this.username, this.pass);
-      this.username = null;
-      this.pass = null;
-      this.buttonLoading = false
-      localStorage.setItem('token', this.signupResponse.token)
-      window.location.reload()
+      try {
+        this.signupResponse = await window.login(this.username, this.pass);
+        localStorage.setItem('token', this.signupResponse.token)
+        window.location.reload()
+      } catch (e) {
+        this.error = "Invalid Username/Email or Password";
+        this.openNotification();
+      } finally {
+        this.buttonLoading = false
+        this.username = null;
+        this.pass = null;
+      }
     },
     openNotification() {
       ElNotification({

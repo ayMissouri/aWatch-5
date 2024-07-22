@@ -36,7 +36,7 @@ window.getTopShows = async function () {
 
 window.getNetworks = async function () {
   const response = await axios.get(`https://api.awatch.fun/lists/name/networks`);
-  console.log(response.data.data);
+  // console.log(response.data.data);
   return response.data.data;
 };
 
